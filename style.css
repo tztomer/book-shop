@@ -1,0 +1,142 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  font-family: monospace;
+  color: white;
+}
+
+div#app {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+/* app-header, app-footer */
+.app-header,
+.app-footer {
+  background-color: lightgray;
+  height: 5vh;
+}
+
+/* book-app */
+
+.book-app {
+  height: 90vh;
+  background-color: #242323;
+  position: relative;
+}
+
+/* book-list */
+
+.book-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* book-preview */
+
+.book-preview-container {
+  padding: 10px;
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+  background-color: #272727;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid;
+}
+
+/* book-details */
+.book-details {
+  background-color: #272727;
+  padding: 20px;
+}
+
+.book-details img {
+  height: 150px;
+}
+
+/* book-edit */
+
+.book-edit {
+  background-color: lightgoldenrodyellow;
+  padding: 20px;
+}
+
+/* book-filter */
+.book-filter {
+  background-color: #272727;
+  padding: 10px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+span.book-on-sale {
+  position: absolute;
+  background: #ed2123;
+  top: -28px;
+  right: -41px;
+  padding: 15px;
+  border-radius: 50%;
+  width: 69px;
+  color: white;
+  text-align: center;
+}
+
+span.red {
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 13px;
+  padding: 3px;
+}
+
+.book-details img {
+  height: 150px;
+  max-width: 100px;
+  object-fit: cover;
+}
+
+.app-header,
+.app-footer {
+  background-color: #272727;
+  height: 5vh;
+  text-align: center;
+  line-height: 50px;
+  font-size: 40px;
+}
