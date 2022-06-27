@@ -1,24 +1,41 @@
 import { utilService } from "./util-service.js";
-
+import { storageService } from "../services/async-storage-service.js";
 import booksArray from "../../books.json" assert { type: "json" };
 
+const DB_BOOKS = "DB_BOOKS";
+_createBooks();
+
 export const bookService = {
-  getBooks,
-  removedBook,
+  query,
+  remove,
+  save,
+  get,
   getEmptyBook,
 };
 
-console.log(booksArray);
-function getBooks() {
-  return booksArray;
+function _createBooks() {
+  utilService.saveToStorage(DB_BOOKS, booksArray);
+}
+function query() {
+  return storageService.query(DB_BOOKS);
+}
+function remove(bookId) {
+  return storageService.remove(DB_BOOKS, bookId);
 }
 
-function removedBook(bookid) {
-  const books = getBooks();
-  const idx = books.findIndex(book => book.id === bookid);
-  books.splice(idx, 1);
+function get(bookId) {
+  return storageService.get(DB_BOOKS, bookId);
+}
+
+function save(book) {
+  if (book.id) return storageService.put(DB_BOOKS, book);
+  else return storageService.post(DB_BOOKS, book);
 }
 
 function getEmptyBook() {
-  return { id: "", authors: "" };
+  return {
+    id: "",
+    vendor: "",
+    maxSpeed: 0,
+  };
 }

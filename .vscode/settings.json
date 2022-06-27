@@ -1,4 +1,7 @@
 {
   "liveServer.settings.port": 5503,
-  "cSpell.words": ["cmps"]
+  "cSpell.words": ["cmps"],
+  "[javascript]": {
+    "cSpell.showAutocompleteSuggestions": true
+  }
 }
