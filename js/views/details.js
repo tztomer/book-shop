@@ -1,5 +1,7 @@
 import { bookService } from "../services/book-service.js";
 
+import bookReview from "../views/review-add.cmp.js";
+
 export default {
   template: `
     <section v-if="book"  class="book-details ">
@@ -11,6 +13,12 @@ export default {
         <p>Page Count:  {{pageCount}} </p>
         <img v-bind:src="book.thumbnail">
         <router-link :to="'/book'">Back</router-link>
+       <book-review @review="setReviews()"/>
+      
+      
+
+
+
     </section>
 `,
   data() {
@@ -23,7 +31,15 @@ export default {
     const id = this.$route.params.bookId;
     bookService.get(id).then(book => (this.book = book));
   },
-  methods: {},
+  components: {
+    bookReview,
+  },
+  methods: {
+    setReviews(rev) {
+      // this.book.review = rev;
+      console.log("rev", rev);
+    },
+  },
   computed: {
     pageCount() {
       if (this.book.pageCount > 500) {

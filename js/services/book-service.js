@@ -10,7 +10,8 @@ export const bookService = {
   remove,
   save,
   get,
-  getEmptyBook,
+  // postMany,
+  // getEmptyBook,
 };
 
 function _createBooks() {
@@ -36,6 +37,10 @@ function save(book) {
   if (book.id) return storageService.put(DB_BOOKS, book);
   else return storageService.post(DB_BOOKS, book);
 }
+
+// function postMany(entityType, newEntities){
+
+// }
 
 function getEmptyBook() {
   return {
