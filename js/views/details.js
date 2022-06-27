@@ -1,7 +1,8 @@
+import { bookService } from "../services/book-service.js";
+
 export default {
-  props: ["book"],
   template: `
-    <section class="book-details">
+    <section v-if="book"  class="book-details ">
         <h4> Book Details</h4>
         <h5>{{publishedDate}}</h5>
         <h4 :class="price">Price: {{book.listPrice.amount}}</h4>
@@ -9,11 +10,18 @@ export default {
         <p>Description :{{book.description}}</p>
         <p>Page Count:  {{pageCount}} </p>
         <img v-bind:src="book.thumbnail">
-        <button @click="$emit('close')">Back</button>
+        <router-link :to="'/book'">Back</router-link>
     </section>
 `,
   data() {
-    return {};
+    return {
+      book: null,
+    };
+  },
+  created() {
+    console.log(this.$route.params);
+    const id = this.$route.params.bookId;
+    bookService.get(id).then(book => (this.book = book));
   },
   methods: {},
   computed: {

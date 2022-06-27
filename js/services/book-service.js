@@ -14,7 +14,12 @@ export const bookService = {
 };
 
 function _createBooks() {
-  utilService.saveToStorage(DB_BOOKS, booksArray);
+  storageService.query(DB_BOOKS).then(books => {
+    if (!books || !books.length) {
+      books = booksArray;
+      utilService.saveToStorage(DB_BOOKS, books);
+    }
+  });
 }
 function query() {
   return storageService.query(DB_BOOKS);
