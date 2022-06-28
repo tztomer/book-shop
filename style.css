@@ -154,3 +154,21 @@ a {
 .router-link-exact-active {
   color: rgb(0, 255, 119);
 }
+.book-review-form span {
+  color: lightgray;
+  cursor: pointer;
+}
+
+.book-review-form .star {
+  color: rgb(236, 232, 16);
+}
+.rate {
+  font-size: 17px;
+}
+li.gray {
+  list-style: none;
+  background: gray;
+  padding: 10px;
+  border-radius: 6px;
+  margin-block-end: 25px;
+}

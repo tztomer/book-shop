@@ -3,5 +3,7 @@
   "cSpell.words": ["cmps"],
   "[javascript]": {
     "cSpell.showAutocompleteSuggestions": true
-  }
+  },
+  "prettier.htmlWhitespaceSensitivity": "strict",
+  "editor.formatOnSave": true
 }

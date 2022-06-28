@@ -10,6 +10,9 @@ export const bookService = {
   remove,
   save,
   get,
+  addReview,
+  getEmptyReview,
+  removeReview,
   // postMany,
   // getEmptyBook,
 };
@@ -38,14 +41,33 @@ function save(book) {
   else return storageService.post(DB_BOOKS, book);
 }
 
-// function postMany(entityType, newEntities){
+function addReview(bookId, review) {
+  return get(bookId).then(book => {
+    review.id = utilService.makeId();
+    if (!book.reviews) {
+      book.reviews = [];
+      book.reviews.push(review);
+      return storageService.put(DB_BOOKS, book);
+    } else {
+      book.reviews.push(review);
+      return storageService.put(DB_BOOKS, book);
+    }
+  });
+}
 
-// }
+function removeReview(bookId, reviewId) {
+  return get(bookId).then(book => {
+    const idx = book.reviews.findIndex(review => review.id === reviewId);
+    book.reviews.splice(idx, 1);
+    return storageService.put(DB_BOOKS, book);
+  });
+}
 
-function getEmptyBook() {
+function getEmptyReview() {
   return {
-    id: "",
-    vendor: "",
-    maxSpeed: 0,
+    rederName: "",
+    rate: "",
+    readingDate: "",
+    bookReview: "",
   };
 }
