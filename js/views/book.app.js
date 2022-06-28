@@ -1,4 +1,5 @@
 import { bookService } from "../services/book-service.js";
+
 import bookList from "../cmps/book-list.js";
 import bookFilter from "../cmps/book-filter.js";
 import bookDetails from "./details.js";
@@ -20,10 +21,15 @@ export default {
   },
   data() {
     return {
-      books: bookService.getBooks(),
+      books: null,
       selectedBook: null,
       filterBy: null,
     };
+  },
+  created() {
+    return bookService.query().then(books => {
+      this.books = books;
+    });
   },
   methods: {
     filterBook(filterBy) {
@@ -33,10 +39,11 @@ export default {
       this.selectedBook = book;
     },
     removeBook(bookid) {
-      bookService.removedBook(bookid);
-      const idx = this.books.findIndex(book => book.id === bookid);
-      this.books.splice(idx, 1);
-      console.log(this.books.splice(idx, 1));
+      bookService.remove(bookid).then(() => {
+        const idx = this.books.findIndex(book => book.id === bookid);
+        this.books.splice(idx, 1);
+        console.log("Book Deleted");
+      });
     },
   },
   computed: {

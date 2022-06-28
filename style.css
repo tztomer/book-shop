@@ -28,6 +28,11 @@ p {
   margin: 0;
 }
 
+header.app-header {
+  height: fit-content;
+  font-size: 25px;
+  color: white;
+}
 /* app-header, app-footer */
 .app-header,
 .app-footer {
@@ -139,4 +144,31 @@ span.red {
   text-align: center;
   line-height: 50px;
   font-size: 40px;
+}
+
+a {
+  color: whitesmoke;
+  font-family: monospace;
+}
+
+.router-link-exact-active {
+  color: rgb(0, 255, 119);
+}
+.book-review-form span {
+  color: lightgray;
+  cursor: pointer;
+}
+
+.book-review-form .star {
+  color: rgb(236, 232, 16);
+}
+.rate {
+  font-size: 17px;
+}
+li.gray {
+  list-style: none;
+  background: gray;
+  padding: 10px;
+  border-radius: 6px;
+  margin-block-end: 25px;
 }
